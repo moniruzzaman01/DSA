@@ -16,17 +16,19 @@ class Node{
 
 int main()
 {
-    Node *a = new Node(10);
+    Node *head = new Node(10);
     Node *b = new Node(20);
     Node *c = new Node(30);
     Node *d = new Node(40);
-    a->next = b;
+    head->next = b;
     b->next = c;
     c->next = d;
-    cout << a->value << endl;
-    cout << b->value << endl;
-    cout << c->value << endl;
-    cout << d->value << endl;
+    Node *temp = head;
+    while(temp!=NULL)
+    {
+        cout << temp->value << " ";
+        temp = temp->next;
+    }
 
-    return 0;
+        return 0;
 }
