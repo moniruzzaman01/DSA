@@ -49,24 +49,12 @@ void insert_at_tail(Node *&head, Node *&tail, int value)
     }
 }
 
-void insert_at_position(Node *head, int pos, int value)
+void delete_head(Node *&head)
 {
-    Node *newNode = new Node(value);
     Node *temp = head;
-    int i = 1;
-    while(temp!=NULL)
-    {
-        if(i==pos)
-        {
-            newNode->prev = temp->prev;
-            newNode->next = temp;
-            temp->prev->next = newNode;
-            temp->prev = newNode;
-            break;
-        }
-        temp = temp->next;
-        i++;
-    }
+    head = head->next;
+    head->prev = NULL;
+    delete temp;
 }
 
 int main()
@@ -79,9 +67,7 @@ int main()
     insert_at_tail(head, tail, 30);
     insert_at_tail(head, tail, 40);
 
-    insert_at_position(head, 2, 100);
-    insert_at_position(head, 3, 500);
-    cout << endl;
+    delete_head(head);
 
     print_linked_list(head);
     cout << endl;
