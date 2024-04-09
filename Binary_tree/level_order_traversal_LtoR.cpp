@@ -34,28 +34,55 @@ void levelOrderTraversal(Node *root){
     }
 }
 
+Node *takeInput(){
+    int n;
+    cin >> n;
+    Node *root;
+    if (n == -1)
+        root = NULL;
+    else
+        root = new Node(n);
+        
+    queue<Node *> q;
+    if(root)
+        q.push(root);
+
+    while (!q.empty())
+    {
+        //step1 ber kore ano
+        Node *temp = q.front();
+        q.pop();
+
+        //step2 ja kaj ache koro
+        int l, r;
+        cin >> l >> r;
+        Node *left;
+        Node *right;
+        if(l==-1)
+            left = NULL;
+        else
+            left = new Node(l);
+        if(r==-1)
+            right = NULL;
+        else
+            right = new Node(r);
+
+        temp->left = left;
+        temp->right = right;
+
+        //step3 queue te children push koro
+        if(temp->left)
+            q.push(temp->left);
+        if(temp->right)
+            q.push(temp->right);
+    }
+    return root;
+}
+
+
 int main()
 {
-    Node *root = new Node(10);
-    Node *a = new Node(20);
-    Node *b = new Node(30);
-    Node *c = new Node(40);
-    Node *d = new Node(50);
-    Node *e = new Node(60);
-    Node *f = new Node(70);
-    Node *g = new Node(80);
-    Node *h = new Node(90);
-    Node *i = new Node(100);
-
-    root->left = a;
-    root->right = b;
-    a->left = c;
-    a->right = d;
-    c->right = f;
-    d->right = g;
-    b->right = e;
-    e->left = h;
-    e->right = i;
+    Node *root = takeInput();
 
     levelOrderTraversal(root);
 

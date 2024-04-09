@@ -11,6 +11,7 @@ class Node{
         this->right = NULL;
     }
 };
+
 void levelOrderTraversal(Node *root){
     queue<Node *> q;
     q.push(root);
@@ -31,6 +32,7 @@ void levelOrderTraversal(Node *root){
             q.push(front->right);
     }
 }
+
 Node *takeInput(){
     int n;
     cin >> n;
@@ -46,11 +48,11 @@ Node *takeInput(){
 
     while (!q.empty())
     {
-        //step1
+        //step1 ber kore ano
         Node *temp = q.front();
         q.pop();
 
-        //step2
+        //step2 ja kaj ache koro
         int l, r;
         cin >> l >> r;
         Node *left;
@@ -67,7 +69,7 @@ Node *takeInput(){
         temp->left = left;
         temp->right = right;
 
-        //step3
+        //step3 queue te children push koro
         if(temp->left)
             q.push(temp->left);
         if(temp->right)
